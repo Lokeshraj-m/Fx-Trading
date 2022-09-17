@@ -1,13 +1,29 @@
 package com.fxTrading.entity;
 
-public class Print {
-	private int tradeNo;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "bookedtrade", catalog = "fxtrading")
+// Booked trade class...
+public class BookedTrade {
+	@Id
+	// To auto generate the trade number....
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer tradeNo;
 	private String currencyPair;
 	private String customerName;
 	private double amount;
 	private double rate;
-	
-	public Print(int tradeNo, String currencyPair, String customerName, double amount, double rate) {
+
+	public BookedTrade() {
+
+	}
+
+	public BookedTrade(int tradeNo, String currencyPair, String customerName, double amount, double rate) {
 		super();
 		this.tradeNo = tradeNo;
 		this.currencyPair = currencyPair;
@@ -61,8 +77,5 @@ public class Print {
 		return "Print [tradeNo=" + tradeNo + ", currencyPair=" + currencyPair + ", customerName=" + customerName
 				+ ", amount=" + amount + ", rate=" + rate + "]";
 	}
-	
-}
-	
 
-	
+}
