@@ -14,9 +14,7 @@ import com.fxTrading.entity.User;
 import com.fxTrading.repository.PrintRepository;
 
 @Service
-public class FXTradingService {
-
-	
+public class FXTradingServiceImpl implements FXTradingServiceInterface{
 
 	@Autowired
 	PrintRepository printRepository;

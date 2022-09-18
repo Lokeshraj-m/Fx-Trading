@@ -1,9 +1,13 @@
 package com.fxTrading.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,32 +17,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fxTrading.entity.BookedTrade;
 import com.fxTrading.entity.User;
-import com.fxTrading.service.FXTradingService;
+import com.fxTrading.service.FXTradingServiceImpl;
 
 @RestController
 public class FXTradingController {
-	
-		
+
 	@Autowired
-	FXTradingService fxTradingService;
+	FXTradingServiceImpl fxTradingService;
 
 	// To Get the User Details...
 	// To Display the Exchange value of the Trade...
 	@PostMapping("exchangeRate")
-	public String exchangeRate(@RequestBody @Valid User bookingDetails) {
+	public ResponseEntity<String> exchangeRate(@RequestBody @Valid User bookingDetails) {
 
-		return fxTradingService.exchangeRate(bookingDetails);
+		return new ResponseEntity<String>(fxTradingService.exchangeRate(bookingDetails), HttpStatus.ACCEPTED);
 	}
 
 	// To Book or Cancel the Trade...
 	@PostMapping("exchangeRate/{bookingConfirmation}")
-	public String bookTrade(@PathVariable String bookingConfirmation) {
-		return fxTradingService.bookTrade(bookingConfirmation);
+	public ResponseEntity<String> bookTrade(@PathVariable String bookingConfirmation) {
+		return new ResponseEntity<String>(fxTradingService.bookTrade(bookingConfirmation), HttpStatus.ACCEPTED);
 	}
 
 	// To Print the Booked Trade Details from the DataBase...
 	@GetMapping("printTrade")
-	public java.util.List<BookedTrade> printBookedTrade() {
+	public List<BookedTrade> printBookedTrade() {
 		return fxTradingService.printBookedTrade();
 	}
 
@@ -49,6 +52,7 @@ public class FXTradingController {
 			@PathVariable String field) {
 		return fxTradingService.paginationAndSortedBookedTrade(pageNo, pageSize, field);
 	}
+
 	@RequestMapping("/Exit")
 	public String shutdown() {
 		return "Have a Great Day...";
