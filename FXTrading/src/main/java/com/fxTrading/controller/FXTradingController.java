@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fxTrading.entity.BookedTrade;
@@ -16,6 +17,8 @@ import com.fxTrading.service.FXTradingService;
 
 @RestController
 public class FXTradingController {
+	
+		
 	@Autowired
 	FXTradingService fxTradingService;
 
@@ -45,6 +48,10 @@ public class FXTradingController {
 	public Page<BookedTrade> paginationAndSortedBookedTrade(@PathVariable int pageNo, @PathVariable int pageSize,
 			@PathVariable String field) {
 		return fxTradingService.paginationAndSortedBookedTrade(pageNo, pageSize, field);
+	}
+	@RequestMapping("/Exit")
+	public String shutdown() {
+		return "Have a Great Day...";
 	}
 
 }

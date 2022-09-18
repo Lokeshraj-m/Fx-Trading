@@ -16,12 +16,14 @@ import com.fxTrading.repository.PrintRepository;
 @Service
 public class FXTradingService {
 
+	
+
 	@Autowired
 	PrintRepository printRepository;
 
 	// Created the object for User to Store the User Details and accessing it inside
 	// the FXTraadingService...
-	private User book = new User();
+	private User user = new User();
 	// To access it inside the FXTradingService and made it as a final...
 	private static final double usdInrRate = 66.00;
 
@@ -29,9 +31,9 @@ public class FXTradingService {
 	public String exchangeRate(User userDetails) {
 
 		// Adding the Required data to the user...
-		book.setCustomerName(userDetails.getCustomerName());
-		book.setCurrencyPair(userDetails.getCurrencyPair());
-		book.setTransferAmount(userDetails.getTransferAmount());
+		user.setCustomerName(userDetails.getCustomerName());
+		user.setCurrencyPair(userDetails.getCurrencyPair());
+		user.setTransferAmount(userDetails.getTransferAmount());
 		// Converting the Currency Value From USD to INR....
 		double converted = userDetails.getTransferAmount() * usdInrRate;
 		// verifying that the User need Exchange Rate or Not....
@@ -48,11 +50,11 @@ public class FXTradingService {
 	// database...
 	public String bookTrade(String bookingConfirmation) {
 		if (bookingConfirmation.equalsIgnoreCase("BOOK")) {
-			double converted = book.getTransferAmount() * usdInrRate;
+			double converted = user.getTransferAmount() * usdInrRate;
 			printRepository
-					.save(new BookedTrade(0, book.getCurrencyPair(), book.getCustomerName(), converted, usdInrRate));
+					.save(new BookedTrade(0, user.getCurrencyPair(), user.getCustomerName(), converted, usdInrRate));
 			return "Trade for USDINR has been booked with rate " + usdInrRate + "," + "The amount of RS " + converted
-					+ " will be transferred in 2 working days to " + book.getCustomerName() + ".";
+					+ " will be transferred in 2 working days to " + user.getCustomerName() + ".";
 		} else {
 			return "Trade is Cancelled...";
 		}
@@ -68,4 +70,5 @@ public class FXTradingService {
 	public Page<BookedTrade> paginationAndSortedBookedTrade(int pageNo, int pageSize, String sortBy) {
 		return printRepository.findAll(PageRequest.of(pageNo, pageSize, Sort.by(Direction.ASC, sortBy)));
 	}
+
 }
