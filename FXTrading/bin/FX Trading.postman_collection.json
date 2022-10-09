@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "17385cdd-f356-43ca-b061-f9cfdce0244e",
+		"name": "FX Trading",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23027312"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/exchangeRate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerName\": \"Lokesh Raj M\",\r\n    \"currencyPair\": \"USDINR\",\r\n    \"transferAmount\": \"10\",\r\n    \"getRate\": \"yes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exchangeRate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exchangeRate"
+					]
+				},
+				"description": "FX Trading. \r\nBook Trade API "
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/exchangeRate/book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/exchangeRate/book",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exchangeRate",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/printtrade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/printtrade",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"printtrade"
+					]
+				},
+				"description": "to print the booked Trade\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/printTrade/pageNo=0/pageSize=3/sort=amount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/printTrade/pageNo=0/pageSize=3/sort=amount",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"printTrade",
+						"pageNo=0",
+						"pageSize=3",
+						"sort=amount"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
