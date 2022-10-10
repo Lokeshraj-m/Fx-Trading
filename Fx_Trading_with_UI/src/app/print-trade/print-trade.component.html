@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="jumbotron bg-cover">
+    <div class="container text-center">
+        <br><h3 class="display-5 font-weight-bold">Trade History</h3><hr>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <table class="table table-bordered table-hover">
+                      <thead>
+                        <th>Trade No</th>
+                        <th>Name</th>
+                        <th>Currency Pair</th>
+                        <th>Amount</th>
+                        <th>Rate</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of TradeList | paginate:{ itemsPerPage:5,currentPage:p}">
+                          <td>{{item.tradeNo}}</td>
+                          <td>{{item.customerName}}</td>
+                          <td>{{item.currencyPair}}</td>
+                          <td>{{item.amount}}</td>
+                          <td>{{item.rate}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><hr>
+                  <pagination-controls (pageChange)="p = $event" 
+                      style="float:right ;"></pagination-controls><br><br>
+                  <button style="text-align: center;" (click)="onClick()" class="btn btn-secondary">Back</button><br><br>
+            </div>
+        </div>
+    </div>
+</div>
