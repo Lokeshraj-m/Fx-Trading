@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpService } from '../http.service';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-book-trade',
@@ -15,13 +17,15 @@ export class BookTradeComponent implements OnInit {
   exchangeRate:any[]=['Yes','No'];
   isHidden:boolean=true;
   isDisabled:boolean=true;
-  Name_Pattern:any='[A-Za-z\\s.]*';
+  Name_Pattern:any='^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,}$';
 
   constructor(private router:Router,
     private service:HttpService,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService,
+    private title:Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle("Book Trade-Fx Trading ");
   }
   onSubmit(f:NgForm){
     this.isHidden=false;

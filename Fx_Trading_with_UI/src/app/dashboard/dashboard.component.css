@@ -8,3 +8,7 @@
 p{
     margin-left: 4rem;
 }
+a:hover{
+    opacity: 70%;
+    font-weight: bolder;
+}

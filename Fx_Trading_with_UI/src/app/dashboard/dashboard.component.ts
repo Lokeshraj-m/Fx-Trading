@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +11,11 @@ import { ToastrService } from 'ngx-toastr';
 export class DashboardComponent implements OnInit {
 
   constructor(private router:Router,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService,
+    private title:Title) { }
 
   ngOnInit(): void {
-    
+    this.title.setTitle("Dashboard-Fx Trading")
   }
   onClick(){
     if(confirm("Do You want to Exit?")){
@@ -21,5 +23,10 @@ export class DashboardComponent implements OnInit {
       this.toastr.info("Have a Great Day","Thank You")
     }
   }
-
+  onBookTrade(){
+    this.router.navigate(['/BookTrade']);
+  }
+  onTradeList(){
+    this.router.navigate(['/PrintTrade']);
+  }
 }

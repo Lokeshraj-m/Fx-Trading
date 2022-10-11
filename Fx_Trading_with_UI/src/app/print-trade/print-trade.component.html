@@ -14,7 +14,7 @@
                         <th>Rate</th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of TradeList | paginate:{ itemsPerPage:5,currentPage:p}">
+                        <tr *ngFor="let item of TradeList | paginate:{ itemsPerPage:10,currentPage:p}">
                           <td>{{item.tradeNo}}</td>
                           <td>{{item.customerName}}</td>
                           <td>{{item.currencyPair}}</td>

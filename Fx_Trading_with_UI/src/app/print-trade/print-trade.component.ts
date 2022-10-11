@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
+
 
 @Component({
   selector: 'app-print-trade',
@@ -13,9 +15,11 @@ export class PrintTradeComponent implements OnInit {
   p:number=1
 
   constructor(private service:HttpService,
-    private router:Router) { }
+    private router:Router,
+    private title:Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle("Trade History-Fx Trading")
     this.GetTradeList();
   }
 
