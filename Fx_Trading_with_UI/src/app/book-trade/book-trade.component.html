@@ -44,15 +44,15 @@
                     </mat-radio-button><br>
                 </mat-radio-group>
                 <button mat-raised-button color="accent" [hidden]="!isHidden" [disabled]="!f.valid">Submit</button>
-                <span>
-                    <button (click)="onBook()"  mat-raised-button color="primary"
-                    [disabled]="!isDisabled" [hidden]="isHidden"
-                    >Book</button>
-                    <button (click)="onCancel()" mat-raised-button color="warn"
-                    [hidden]="isHidden" 
-                    >Cancel</button>
-                </span>
-              </form><br>
+              </form>
+              <span>
+                <button (click)="onBook()"  mat-raised-button color="primary"
+                [disabled]="!isDisabled" [hidden]="isHidden"
+                >Book</button>
+                <button (click)="onCancel()" mat-raised-button color="warn"
+                [hidden]="isHidden" 
+                >Cancel</button>
+            </span><br><br>
             </div>
         </div>
     </div>

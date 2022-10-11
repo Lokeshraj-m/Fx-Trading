@@ -32,7 +32,7 @@ export class BookTradeComponent implements OnInit {
       getRate:f.value.getRate
     }
     this.service.getRate(obj)
-    .subscribe((response)=>{
+    .subscribe((response:any)=>{
       alert(response);
       this.toastr.info(response,'Rate');
     })
@@ -51,7 +51,7 @@ export class BookTradeComponent implements OnInit {
     this.service.BookTrade('cancel')
     .subscribe((response)=>{
       alert(response);
-      this.toastr.success(response,'Cancelled');
+      this.toastr.error(response,'Cancelled');
       this.router.navigate(['/Dashboard']);
     })  
   }
