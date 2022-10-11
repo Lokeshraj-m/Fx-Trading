@@ -1,0 +1,59 @@
+<app-header></app-header>
+<div class="jumbotron bg-cover">
+    <div class="container text-center">
+        <br><h3 class="display-5 font-weight-bold">Book Trade</h3><hr>
+        <div class="row">
+            <div class="col">
+      
+              <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      
+                <mat-form-field appearance="outline" class="myclass" [color]="'accent'">
+                  <mat-label>Name</mat-label>
+                  <input matInput type="text" placeholder="Enter Your Name..."
+                    #name="ngModel" ngModel 
+                    name="name"        
+                    required [pattern]="Name_Pattern">
+      
+                    <mat-error *ngIf="name.touched && !name.valid"> ** Please Enter the Valid Name</mat-error>
+                </mat-form-field>
+      
+                <mat-form-field class="myclass">
+                    <mat-label>Select Currency Pair</mat-label>
+                    <mat-select required #currencyPair="ngModel" name="currencyPair" ngModel>
+                        <mat-option>---</mat-option>
+                        <mat-option *ngFor="let item of currencyPairs" [value]="item">
+                        {{item}}
+                        </mat-option>
+            
+                </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="myclass" [color]="'accent'">
+                  <mat-label>Transfer Amount</mat-label>
+                  <input matInput type="number" placeholder="Enter the Amount to Transfer..."
+                        #amount="ngModel" ngModel 
+                        name="amount"
+                        required min="1">
+
+                    <mat-error *ngIf="amount.touched && !amount.valid"> ** Please Enter the Valid Amount</mat-error>
+                </mat-form-field>
+                <mat-radio-group  
+                ngModel #getRate="ngModel" name="getRate">
+                    <mat-label>Do You Want Exchange Rate?&nbsp;</mat-label><br>
+                    <mat-radio-button name="getRate" [value]="item" *ngFor="let item of exchangeRate">{{item}}&nbsp;
+                    </mat-radio-button><br>
+                </mat-radio-group>
+                <button mat-raised-button color="accent" [hidden]="!isHidden" [disabled]="!f.valid">Submit</button>
+              </form>
+              <span>
+                <button (click)="onBook()"  mat-raised-button color="primary"
+                [disabled]="!isDisabled" [hidden]="isHidden"
+                >Book</button>
+                <button (click)="onCancel()" mat-raised-button color="warn"
+                [hidden]="isHidden" 
+                >Cancel</button>
+            </span><br><br>
+            </div>
+        </div>
+    </div>
+</div>
